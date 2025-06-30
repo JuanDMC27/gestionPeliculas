@@ -1,0 +1,10 @@
+GET http://127.0.0.1:5000/generos/
+
+
+GET http://127.0.0.1:5000/peliculas/
+
+#consultar pelicula por id
+GET http://127.0.0.1:5000/peliculas/1
+
+#eliminarPelicula por id
+DELETE http://127.0.0.1:5000/eliminarPelicula/3
