@@ -23,7 +23,7 @@ def iniciar_sesion():
         return render_template("frmInicioSesion.html", mensaje=mensaje)
 
     
-    secret = '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+    secret = '6Lc4KYIrAAAAAGna7C3rGm-SYfTr72GF8f-COu_1'
     response = requests.post(
         'https://www.google.com/recaptcha/api/siteverify',
         data={'secret': secret, 'response': token}
