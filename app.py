@@ -5,11 +5,13 @@ import os
 from routes.genero import ruta_genero
 from routes.pelicula import ruta_pelicula
 from routes.usuario import ruta_usuario
+from flask_cors import CORS 
 
 
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 app.secret_key = "misuperclave123456!@#$"
 app.register_blueprint(ruta_genero)
 app.register_blueprint(ruta_pelicula)
