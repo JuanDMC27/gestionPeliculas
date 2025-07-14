@@ -1,0 +1,115 @@
+{% extends 'index.html' %}
+
+{% block encabezado %}
+  {% include 'componentes/encabezado.html' %}
+{% endblock %}
+
+{% block contenido %}
+<div class="buttons">
+  <button class="add" type="button">+ Agregar Película</button>
+</div>
+
+<section class="peliculasAgregadas">
+  <h2>Películas Agregadas</h2>
+  <div class="card-container" id="contenedorPeliculas">
+    <!-- Aquí agregas dinámicamente las películas con JS o Jinja. Ejemplo estático: -->
+    <div class="card">
+      <h3>Título: Avengers</h3>
+      <p>Protagonista: Iron Man</p>
+      <p>Duración: 120 min</p>
+      <button onclick="enviarCorreo(this)"
+              data-titulo="Avengers"
+              data-protagonista="Iron Man"
+              data-duracion="120">
+        Enviar por correo
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Agregar Película -->
+<div class="modal" id="modalAgregar">
+  <div class="modal-content">
+    <span class="close" id="cerrarModal">&times;</span>
+    <h2>Agregar Película</h2>
+    <form id="formPelicula">
+      <input type="number" name="codigo" placeholder="Código" required />
+      <input type="text" name="titulo" placeholder="Título" required />
+      <input type="text" name="protagonista" placeholder="Protagonista" required />
+      <input type="number" name="duracion" placeholder="Duración (min)" min="30" max="200" required />
+      <textarea name="resumen" placeholder="Resumen..." required></textarea>
+      <input type="text" name="foto" placeholder="URL de la imagen (opcional)" />
+      <select name="genero" id="selectGenero" required>
+        <option value="">Selecciona un género</option>
+      </select>
+      <button type="submit" class="add">Guardar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Editar Película -->
+<div class="modal" id="modalEditar">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModalEditar()">&times;</span>
+    <h2>Editar Película</h2>
+    <form id="formEditar">
+      <input type="hidden" id="editId" />
+      <input type="number" id="editCodigo" required />
+      <input type="text" id="editTitulo" required />
+      <input type="text" id="editProtagonista" required />
+      <input type="number" id="editDuracion" min="30" max="200" required />
+      <textarea id="editResumen" required></textarea>
+      <input type="text" id="editFoto" />
+      <select id="editGenero" required>
+        <option value="">Selecciona un género</option>
+      </select>
+      <button type="submit" class="update">Actualizar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Eliminar Película -->
+<div class="modal" id="modalEliminar">
+  <div class="modal-content">
+    <h2>¿Eliminar esta película?</h2>
+    <p>Esta acción no se puede deshacer.</p>
+    <div class="confirm-buttons">
+      <button class="delete" id="btnConfirmarEliminar">Sí, eliminar</button>
+      <button class="update" onclick="cerrarModalEliminar()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+
+<script>
+function enviarCorreo(boton) {
+  const correo = prompt("Ingresa el correo del destinatario:");
+  if (!correo) return;
+
+  const pelicula = {
+    titulo: boton.dataset.titulo,
+    protagonista: boton.dataset.protagonista,
+    duracion: boton.dataset.duracion
+  };
+
+  fetch('/pelicula/enviar-correo', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ correo, pelicula })
+  })
+  .then(res => res.json())
+  .then(data => {
+    Swal.fire("Correo", data.mensaje, data.estado ? "success" : "error");
+  })
+  .catch(error => {
+    Swal.fire("Error", "No se pudo enviar el correo", "error");
+  });
+}
+</script>
+{% endblock %}
+
+{% block piePagina %}
+  {% include 'componentes/piePagina.html' %}
+{% endblock %}

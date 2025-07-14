@@ -1,0 +1,464 @@
+/*====================*/
+/* GENERAL Y BODY     */
+/*====================*/
+body {
+  background: #0f111a;
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+/*====================*/
+/* HEADER             */
+/*====================*/
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1c1f2a;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+header nav{
+  display: flex;
+  align-items: end;
+}
+.logo {
+  font-size: 24px;
+  color: #5fd2ff;
+}
+.logo span {
+  color: #ffffff;
+}
+header h1 {
+  color: #5fd2ff;
+}
+nav a {
+  margin: 0 10px;
+  color: #ccc;
+  text-decoration: none;
+}
+nav a:hover {
+  color: #5fd2ff;
+}
+
+/*====================*/
+/* SUBTEXTOS Y TÍTULOS*/
+/*====================*/
+.subtexto {
+  color: #ccc;
+  margin-top: 10px;
+}
+.titulo-generos,
+.genero-section h2,
+.peliculasAgregadas h2,
+.modal-content h2 {
+  color: #5fd2ff;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/*====================*/
+/* CARRUSEL           */
+/*====================*/
+.carousel-auto {
+  overflow: hidden;
+  width: 100%;
+  padding: 30px 0;
+}
+.carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 300px;
+  animation: slide-carousel 25s linear infinite;
+  gap: 30px;
+  padding: 10px;
+}
+.carousel-track .movie-card {
+  background: none;
+  border-radius: 10px;
+  padding: 0;
+  flex-shrink: 0;
+  box-shadow: none;
+  text-align: center;
+}
+.carousel-track .poster {
+  height: 350px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+/*====================*/
+/* BOTONES GENERALES  */
+/*====================*/
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+.buttons button,
+.add,
+.update,
+.export {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.add {
+  background: #2b94f7;
+  color: #fff;
+}
+.add:hover {
+  background-color: #5fd2ff;
+  color: #1c1f2a;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.update {
+  background: #38bdf8;
+  color: #fff;
+}
+.export {
+  background: #00d1ff;
+  color: #fff;
+}
+
+/*====================*/
+/* ADMIN BUTTON       */
+/*====================*/
+.admin-button {
+  margin-top: 30px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  background: #2b94f7;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*====================*/
+/* LISTA DE GÉNEROS   */
+/*====================*/
+.genres-container,
+.genero-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 25px;
+}
+.genres-container .genre-chip,
+.genre {
+  background: #2b2e3d;
+  color: #ccc;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+.genero-item {
+  background: #1a1c2d;
+  border-radius: 10px;
+  padding: 15px 20px;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 160px;
+}
+.genero-item span {
+  font-weight: bold;
+  color: #5fd2ff;
+  margin-right: 5px;
+}
+.editar,
+.eliminar {
+  margin-left: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+}
+.editar {
+  background: #38bdf8;
+}
+.eliminar {
+  background: #f87171;
+}
+
+/*====================*/
+/* SECCIÓN PELÍCULAS  */
+/*====================*/
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; 
+}
+.movie-card {
+  background: #1a1c2d;
+  border-radius: 15px;
+  padding: 15px;
+  width: 300px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+}
+.movie-card:hover {
+  transform: scale(1.02);
+}
+.poster {
+  height: 250px;
+  background-color: #2e3247;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.movie-card h3 {
+  color: #5fd2ff;
+  margin-bottom: 5px;
+}
+.movie-card p {
+  font-size: 14px;
+  color: #bbb;
+  flex-grow: 1;
+}
+.rating {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ffd700;
+}
+
+/*====================*/
+/* MODAL GENERAL      */
+/*====================*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.modal-content {
+  background: #1c1f2a;
+  margin: 5% auto;
+  padding: 20px 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.modal-content label {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #5fd2ff;
+}
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background-color: #2e3247;
+  color: white;
+  font-size: 14px;
+  width: 100%;
+}
+.modal-content textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+.modal-content button {
+  align-self: center;
+  margin-top: 10px;
+  border-radius: 20px;
+  height: 30px;
+  background-color: #2b94f7;
+  color: white;
+  border: none;
+}
+.modal-content button:hover {
+  background-color: #5fd2ff;
+  color: #1c1f2a;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.close {
+  font-size: 22px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+.confirm-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/*====================*/
+/* LOADER             */
+/*====================*/
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f111a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.spinner {
+  border: 6px solid #2e3247;
+  border-top: 6px solid #5fd2ff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes slide-carousel {
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/*====================*/
+/* OTRAS SECCIONES    */
+/*====================*/
+.popular-section {
+  padding: 20px;
+  text-align: center;
+}
+footer {
+  text-align: center;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+.actions button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.actions .edit {
+  background-color: #38bdf8;
+  color: #fff;
+}
+.actions .delete {
+  background-color: #f87171;
+  color: #fff;
+}
+
+/*====================*/
+/* RESPONSIVE         */
+/*====================*/
+@media (max-width: 768px) {
+  .card-container {
+    justify-content: center;
+  }
+  .movie-card {
+    width: 90%;
+  }
+}
+
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 60px auto;
+  background-color: #1c1f2a;
+  padding: 30px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.login-container h3 {
+  color: #5fd2ff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.login-form .form-group {
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  font-weight: bold;
+  color: #5fd2ff;
+}
+
+.login-form .form-control {
+  border-radius: 10px;
+  background-color: #2e3247;
+  color: white;
+  border: none;
+  padding: 10px;
+}
+
+.login-form .form-control::placeholder {
+  color: #aaa;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.button-group .btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  border: none;
+}
+
+.button-group .btn-primary {
+  background-color: #2b94f7;
+  color: white;
+}
+
+.button-group .btn-secondary {
+  background-color: #555;
+  color: white;
+}
+
+.button-group .btn:hover {
+  opacity: 0.9;
+}

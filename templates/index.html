@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/inicio.css') }}">
+        <title>Gestion de peliculas</title>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+        <!-- <div id="loader" class="loader-container">
+            <div class="spinner"></div>
+        </div> -->
+            <div>
+                <header>
+                    {% block encabezado %}
+                    {% endblock %}
+                </header>
+                <section>
+                    {% block contenido %}
+                    {% endblock %}
+                </section>
+                <footer>
+                    {% block piePagina %}
+                    {% endblock %}
+                </footer>
+            </div>        
+    </body>
+    </html>

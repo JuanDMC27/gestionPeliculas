@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+
+{% block title %}Inicio de Sesión{% endblock %}
+
+{% block encabezado %}
+  {% include 'componentes/encabezado.html' %}
+{% endblock %}
+
+{% block contenido %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<div class="login-container">
+    <h3 class="login-title">INICIAR SESIÓN</h3>
+    <form action="/iniciarsesion/" method="post" class="login-form">
+        <div class="form-group">
+            <label for="txtuser">Usuario</label>
+            <input type="text" name="txtuser" id="txtuser" placeholder="Ingrese su usuario" required>
+        </div>
+
+        <div class="form-group">
+            <label for="txtPassword">Contraseña</label>
+            <input type="password" name="txtPassword" id="txtPassword" placeholder="Ingrese su contraseña" required>
+        </div>
+        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+
+            <div class="button-group">
+                <button type="submit" class="btn primary">Ingresar</button>
+                <a href="/" class="btn secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+{% if mensaje %}
+<script>
+  Swal.fire("Inicio de sesión", "{{ mensaje }}", "info");
+</script>
+{% endif %}
+{% endblock %}
+<!-- películas.html -->
+<script src="{{ url_for('static', filename='js/peliculas.js') }}"></script>
+
+{% block piePagina %}
+  {% include 'componentes/piePagina.html' %}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+{% block encabezado %}
+    {% include 'componentes/encabezado.html' %}
+{% endblock %}
+{% block contenido %}
+    <div class="buttons">
+        <button class="add" id="btnAgregarGenero">+ Agregar Género</button>
+    </div>
+
+    <section class="genero-section">
+        <h2>Lista de Géneros</h2>
+        <div class="genero-list" id="contenedorGeneros"></div>
+    </section>
+
+<!-- Modal agregar género -->
+    <div class="modal" id="modalGenero">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModalGenero()">&times;</span>
+            <h2>Agregar Género</h2>
+            <form id="formGenero">
+                <label for="nombreGenero">Nombre del género:</label>
+                <input type="text" id="nombreGenero" required>
+                <button type="submit" class="add">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+<!-- Modal editar género -->
+<div class="modal" id="modalEditarGenero">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModalEditarGenero()">&times;</span>
+        <h2>Editar Género</h2>
+        <form id="formEditarGenero">
+            <input type="hidden" id="editGeneroId">
+            <label for="editNombreGenero">Nuevo nombre:</label>
+            <input type="text" id="editNombreGenero" required>
+            <button type="submit" class="update">Actualizar</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- Modal de confirmación para eliminar género -->
+<div class="modal" id="modalEliminarGenero">
+    <div class="modal-content">
+        <h2>¿Eliminar este género?</h2>
+        <p>Esta acción no se puede deshacer.</p>
+        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+            <button class="delete" id="btnConfirmarEliminarGenero">Sí, eliminar</button>
+            <button class="update" onclick="cerrarModalEliminarGenero()">Cancelar</button>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/generos.js') }}"></script>
+{% endblock %}
+{% block piePagina %}
+    {% include 'componentes/piePagina.html' %}
+{% endblock %}

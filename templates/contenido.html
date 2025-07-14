@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% block encabezado %}
+    {% include 'componentes/encabezado.html' %}
+{% endblock %}
+{% block contenido %}  
+    <section class="popular-section">
+        <h2>Bienvenido al administrador de películas</h2>
+        <p class="subtexto">
+            Explora y administra tu colección de películas y generos.<br>
+            Puedes usar las funciones de agregar, editar y eliminar. <br>
+            Usa el menu para navegar entre las paginas del sitio.
+        </p>
+
+    <h2>Películas recientes</h2>
+    <div class="carousel-auto">
+        <div class="carousel-track" id="carouselPeliculas">
+            <!-- Las películas se agregan dinámicamente aquí -->
+        </div>
+    </div>
+
+
+    <button class="admin-button" onclick="window.location.href='{{url_for('ruta_pelicula.peliculas') }}'">Administrar</button>
+
+    <h2 class="titulo-generos">Géneros disponibles</h2>
+    <div class="genres-container" id="contenedorGeneros">
+        <!-- Chips de géneros -->
+    </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/inicio.js') }}"></script>
+{% endblock %}
+{% block piePagina %}
+    {% include 'componentes/piePagina.html' %}
+{% endblock %}
