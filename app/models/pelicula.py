@@ -1,5 +1,5 @@
 from mongoengine import *
-from models.genero import Genero
+from app.models.genero import Genero
 
 class Pelicula(Document):
     codigo = IntField(unique = True, required=True)

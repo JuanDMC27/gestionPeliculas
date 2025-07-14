@@ -1,7 +1,7 @@
 from bson import ObjectId
 from flask import Blueprint, request, render_template, session, redirect, url_for, jsonify
-from models.pelicula import Pelicula
-from models.genero import Genero
+from app.models.pelicula import Pelicula
+from app.models.genero import Genero
 import yagmail
 import os
 
@@ -15,6 +15,7 @@ def vistaPeliculas():
     return render_template("contenido.html")
 @ruta_pelicula.route('/pelicula/enviar-correo', methods=['POST'])
 def enviar_correo():
+    
     datos = request.get_json()
     correo = datos['correo']
     id_pelicula = datos['pelicula_id']

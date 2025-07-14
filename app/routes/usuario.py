@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
-from models.usuario import Usuario
+from app.models.usuario import Usuario
 import requests
 
 ruta_usuario = Blueprint('ruta_usuario', __name__)

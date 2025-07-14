@@ -1,6 +1,6 @@
 from bson import ObjectId
 from flask import Blueprint, request, render_template, session, redirect, url_for
-from models.genero import Genero
+from app.models.genero import Genero
 
 
 ruta_genero = Blueprint('ruta_genero', __name__)
